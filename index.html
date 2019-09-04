@@ -16,21 +16,62 @@
         .kubek {
             width: 200px;
             height: 200px;
-            border-left 3px solid black;
-            border-right 3px solid black;
-            border-bottom 3px solid black;
+            border-left: 3px solid black;
+            border-right: 3px solid black;
+            border-bottom:3px solid black;
             border-radius: 0 0 20px 20px;
-
+            cursor: pointer;
+            float: left;
+            margin: 20px;
+            background-size: 200% 200%;
+            transition: background-position 1000ms;
 
         }
-
-
-
+        .zolta {
+            background-image: linear-gradient( to top, #FFF700 50%, transparent 50%);
+        }
+        .zielona {
+            background-image: linear-gradient( to top, #299617 50%, transparent 50%);
+        }
+        .niebieska {
+            background-image: linear-gradient( to top, #5DADEC 50%, transparent 50%);
+        }
+        .czerwona {
+            background-image: linear-gradient( to top, #e00d0d 50%, transparent 50%);
+        }
+        .fioletowa {
+            background-image: linear-gradient( to top, #b30ed4 50%, transparent 50%);
+        }
+        .rozowa {
+            background-image: linear-gradient( to top, #c51ba0 50%, transparent 50%);
+        }
         
     </style>
 </head>
 <body>
     <h1>Napełnianie kubków</h1>
-    <div class="kubek"></div>
+    <div class="kubek zolta" poziom = "0"></div>
+    <div class="kubek zielona" poziom = "0"></div>
+    <div class="kubek niebieska" poziom = "0"></div>
+    <div class="kubek fioletowa" poziom = "0"></div>
+    <div class="kubek czerwona" poziom = "0"></div>
+    <div class="kubek rozowa" poziom = "0"></div>
 </body>
+<script>
+    function kubekKlik(evt) {
+        let poziom = Number( this.getAttribute('poziom'));
+        poziom += 24;
+        if (poziom <= 96)   {
+            this.style.backgroundPosition = '0' + poziom + "%";
+            this.setAttribute('poziom', poziom );
+        } else{
+            this.style.cursor = "not-allowed";
+        }
+       
+    }
+    let kubki = document.querySelectorAll('.kubek');
+    kubki.forEach( kubek => {
+        kubek.addEventListener ('click', kubekKlik)
+    })
+</script>
 </html>
